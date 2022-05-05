@@ -9,14 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Check out the repo
         uses: actions/checkout@v2
-      - name: Foresight Test Report Uploader
-      if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-result-jest
-          path: .
+
       - name: Push to Gitlab
         uses: docker/build-push-action@v1
         with:
