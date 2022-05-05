@@ -1,6 +1,7 @@
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - "**"
 
 jobs:
 
@@ -13,22 +14,5 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: Push to Gitlab
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.MOBILEDGEX_USERNAME }}
-          password: ${{ secrets.MOBILEDGEX_PASSWORD }}
-          registry: docker.mobiledgex.net
-          repository: venkydev/images/github-deploy
-          tag_with_ref: true
-
-      - name: Deploy to MobiledgeX
-        id: deploy
-        uses: mobiledgex/deploy-app-action@v1.1
-        with:
-          setup: main
-          username: ${{ secrets.MOBILEDGEX_USERNAME }}
-          password: ${{ secrets.MOBILEDGEX_PASSWORD }}
-
       - name: Print output
-        run: echo "Image ${{ steps.deploy.outputs.image }}, Deployments ${{ steps.deploy.outputs.deployments }}"
+        run: echo "Hello World"
