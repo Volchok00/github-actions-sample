@@ -7,7 +7,6 @@ jobs:
 
   deploy_to_main:
     name: Deploy app to the MobiledgeX main setup
-    runs-on: ubuntu-late
 
     steps:
 
